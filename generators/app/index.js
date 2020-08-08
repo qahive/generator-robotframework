@@ -5,7 +5,24 @@ const Scaffold = require('scaffold-generator')
 const mustache = require('mustache')
 const commonPrompts = require('common-generator-prompts')()
 
-mustache.escape = v => v
-const DEFAULT_PROPS = {
-  gitignore: '.gitignore'
+// Reference
+// https://github.com/cristian-rincon/py-struct/blob/master/app/index.js
+module.exports = class extends Generator {
+  prompting() {
+    this.log(yosay(
+        "Welcome to robotframework-puppeteer\n" +
+        "I'll walk you through the installation."
+    ));
+
+    return;
+  }
+
+  writing() {
+    return;
+  }
+
+  end() {
+    return;
+  }
+
 }
