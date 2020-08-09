@@ -18,14 +18,6 @@ module.exports = class extends Generator {
 
     return this.prompt([{
       type: "input",
-      name: "projectName",
-      message: "Please input project name without space",
-      default: '',
-      validate: function (input) {
-          return validator.isAlphanumeric(input);
-      }
-    }, {
-      type: "input",
       name: "isPageObject",
       message: "Would you like to use Page object pattern?",
       default: true
@@ -56,8 +48,6 @@ module.exports = class extends Generator {
   }
 
   writing() {
-
-    var projectName = this.args.projectName;
     var pageName = 'Home';
     var stepName = 'Autentication';
 
@@ -65,32 +55,41 @@ module.exports = class extends Generator {
     // SITE_CONFIG
     this.fs.copyTpl(
       this.templatePath("Config/SITE_CONFIG.yml"),
-      this.destinationPath(`${projectName}/Config/SITE_CONFIG.yml`), {
-        Environment: 'Defailt'
+      this.destinationPath(`Config/SITE_CONFIG_DEFAULT.yml`), {
+        Environment: 'DEFAULT'
       });
     this.fs.copyTpl(
       this.templatePath("Config/SITE_CONFIG.yml"),
-      this.destinationPath(`${projectName}/Config/SITE_CONFIG_PROD.yml`), {
+      this.destinationPath(`Config/SITE_CONFIG_PROD.yml`), {
         Environment: 'PROD'
       });
     
     // TEST_DATA
     this.fs.copyTpl(
-      this.templatePath("Config/USER_DATA.yml"),
-      this.destinationPath(`${projectName}/Config/USER_DATA.yml`), {
-        Environment: 'Defailt'
+      this.templatePath("Config/TEST_DATA.yml"),
+      this.destinationPath(`Config/TEST_DATA_DEFAULT.yml`), {
+        Environment: 'DEFAULT'
       });
     this.fs.copyTpl(
-      this.templatePath("Config/USER_DATA.yml"),
-      this.destinationPath(`${projectName}/Config/USER_DATA_PROD.yml`), {
+      this.templatePath("Config/TEST_DATA.yml"),
+      this.destinationPath(`Config/TEST_DATA_PROD.yml`), {
         Environment: 'PROD'
       });
+    
+    // Utils
+    var utils = ['TestConfigManagement', 'TestLifeCycle'];
+    for (var i in utils) {
+      this.fs.copyTpl(
+        this.templatePath(`Utils/${utils[i]}.resource`),
+        this.destinationPath(`Utils/${utils[i]}.resource`)
+      );
+    }
 
     // Add Page objects
     if(this.args.isPageObject || this.args.isAtdd) {
       this.fs.copyTpl(
         this.templatePath("Pages/Page.resource"),
-        this.destinationPath(`${projectName}/Pages/${pageName}_Page.resource`), {
+        this.destinationPath(`Pages/${pageName}_Page.resource`), {
           PageName: pageName
         });
     }
@@ -99,8 +98,9 @@ module.exports = class extends Generator {
     if(this.args.isAtdd) {
       this.fs.copyTpl(
         this.templatePath("Steps/Steps.resource"),
-        this.destinationPath( `${projectName}/Steps/${stepName}_Steps.resource`), {
+        this.destinationPath( `Steps/${stepName}_Steps.resource`), {
           StepName: stepName,
+          PageName: pageName,
           PageResources: `Resource  ../Pages/${pageName}_Page.resource`,
           KeywordResources: `${pageName}_Page.Wait for page load`
         });
@@ -110,15 +110,16 @@ module.exports = class extends Generator {
     if(this.args.isAtdd) {
       this.fs.copyTpl(
         this.templatePath("Features/Demo.robot"),
-        this.destinationPath( `${projectName}/Features/Demo.robot`), {
+        this.destinationPath( `Features/Demo.robot`), {
           StepResources: `Resource  ../Steps/${stepName}_Steps.resource`,
-          TestSteps: `  Then Verify ${pageName} page load successfully`
+          TestSteps: `  Then Verify ${pageName} page load successfully`,
+          PageName: pageName
         }
       );
     } else if(this.args.isPageObject) {
       this.fs.copyTpl(
         this.templatePath("Features/Demo.robot"),
-        this.destinationPath( `${projectName}/Features/Demo.robot`), {
+        this.destinationPath( `Features/Demo.robot`), {
           StepResources: `Resource  ../Pages/${pageName}_Page.resource`,
           TestSteps: `  ${pageName}_Page.Wait for page load`,
           PageName: pageName
@@ -127,7 +128,7 @@ module.exports = class extends Generator {
     } else {
       this.fs.copyTpl(
         this.templatePath("Features/Demo.robot"),
-        this.destinationPath( `${projectName}/Features/Demo.robot`), {
+        this.destinationPath( `Features/Demo.robot`), {
           StepResources: `Library  PuppeteerLibrary`,
           TestSteps: `  PuppeteerLibrary.Wait Until Page Contains Element  id=Please update locator`,
           PageName: pageName
