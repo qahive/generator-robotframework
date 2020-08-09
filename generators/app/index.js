@@ -17,27 +17,30 @@ module.exports = class extends Generator {
     ));
 
     return this.prompt([
+    /*
     {
       type: "input",
-      name: "project_name",
+      name: "projectName",
       message: "Please input project name without space",
       default: '',
       validate: function (input) {
           return validator.isAlphanumeric(input);
       }
-    }, {
+    }, 
+    */
+    {
       type: "input",
-      name: "page_object",
+      name: "isPageObject",
       message: "Would you like to use Page object pattern?",
       default: true
     }, {
       type: "input",
-      name: "atdd",
+      name: "isAtdd",
       message: "Would you like to use ATDD/BDD?",
       default: false
     }, {
       type: "input",
-      name: "pdf",
+      name: "isPdf",
       message: "Would you like to include PDF reader?",
       default: true
     }, {
@@ -50,15 +53,51 @@ module.exports = class extends Generator {
       name: "percy",
       message: "Would you like to include Visual Testing?",
       default: true
-    }]);
+    }]).then(answers => {
+      this.args = answers;
+      this.config.set(this.args);
+    });
   }
 
   writing() {
+    // Page object & ATDD
+    /*
+    if(this.args.isPageObject && this.args.isAtdd) {
+      this.fs.copyTpl(
+        this.templatePath("docs/source/" + conff[i]),
+        this.destinationPath("docs/source/" + conff[i]), {
+            projectID: this.args.projectID,
+            desc: this.args.desc,
+            email: this.args.email,
+            user: this.args.user
+        });
+    } else if(this.args.isPageObject) {
+
+    } else if(this.args.isAtdd) {
+
+    } else {
+
+    }
+    */
+    
+    // YML Config
+    if(this.args.isPdf) {
+      this.fs.copyTpl(
+        this.templatePath("config/SITE_CONFIG.yml"),
+        this.destinationPath(`config/SITE_CONFIG.yml`));
+    } 
+
+    // Percy
+
+    // Extra library (pdf, zxing)
+
+    // Add demo scripts
+
     return;
   }
 
   end() {
-    return;
+    this.config.save();
   }
 
 }
