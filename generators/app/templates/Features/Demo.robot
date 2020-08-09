@@ -10,4 +10,4 @@ Variables    ../Config/TEST_DATA_DEFAULT.yml
 
 *** Test Cases ***
 Ensure <%= PageName %> page should load successfully
-    <%= TestSteps %>
+<%= TestSteps %>

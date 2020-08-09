@@ -2,7 +2,7 @@
 Library    PuppeteerLibrary
 
 *** Variables ***
-${<%= PageName %>_Page.Unique page identifier}    id=Please update locator
+${<%= PageName %>_Page.Unique page identifier}    id=hplogo
 
 
 *** Keywords ***

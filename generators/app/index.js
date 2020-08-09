@@ -6,9 +6,7 @@ const Scaffold = require('scaffold-generator')
 const mustache = require('mustache')
 const commonPrompts = require('common-generator-prompts')()
 
-// Reference
-// https://github.com/cristian-rincon/py-struct/blob/master/app/index.js
-// https://github.com/angular-fullstack/generator-angular-fullstack/blob/master/src/generators/app/index.js
+
 module.exports = class extends Generator {
   prompting() {
     this.log(yosay(
@@ -50,6 +48,15 @@ module.exports = class extends Generator {
   writing() {
     var pageName = 'Home';
     var stepName = 'Autentication';
+
+    // Project detail
+    var utils = ['.gitignore', 'README.md', 'requirements.txt'];
+    for (var i in utils) {
+      this.fs.copyTpl(
+        this.templatePath(`${utils[i]}`),
+        this.destinationPath(`${utils[i]}`)
+      );
+    }
 
     // YML Config
     // SITE_CONFIG
@@ -112,7 +119,7 @@ module.exports = class extends Generator {
         this.templatePath("Features/Demo.robot"),
         this.destinationPath( `Features/Demo.robot`), {
           StepResources: `Resource  ../Steps/${stepName}_Steps.resource`,
-          TestSteps: `  Then Verify ${pageName} page load successfully`,
+          TestSteps: `    Then Verify ${pageName} page load successfully`,
           PageName: pageName
         }
       );
@@ -121,7 +128,7 @@ module.exports = class extends Generator {
         this.templatePath("Features/Demo.robot"),
         this.destinationPath( `Features/Demo.robot`), {
           StepResources: `Resource  ../Pages/${pageName}_Page.resource`,
-          TestSteps: `  ${pageName}_Page.Wait for page load`,
+          TestSteps: `    ${pageName}_Page.Wait for page load`,
           PageName: pageName
         }
       );
@@ -130,7 +137,7 @@ module.exports = class extends Generator {
         this.templatePath("Features/Demo.robot"),
         this.destinationPath( `Features/Demo.robot`), {
           StepResources: `Library  PuppeteerLibrary`,
-          TestSteps: `  PuppeteerLibrary.Wait Until Page Contains Element  id=Please update locator`,
+          TestSteps: `    PuppeteerLibrary.Wait Until Page Contains Element  id=hplogo`,
           PageName: pageName
         }
       );
