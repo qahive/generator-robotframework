@@ -6,8 +6,21 @@
     "generators"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "robotframework",
+    "puppeteer",
+    "robotframework-puppeteer"
   ],
+  "homepage": "https://github.com/qahive/generator-robotframework-puppeteer",
+  "author": "Atthaboon Sanurt <atthaboon.s@gmail.com>",
+  "contributors":[
+    "Atthaboon Sanurt <atthaboon.s@gmail.com>",
+    "Penploy Sribumrungwong <penploy.s@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/qahive/generator-robotframework-puppeteer.git"
+  },
   "dependencies": {
     "chalk": "^4.1.0",
     "common-generator-prompts": "^2.0.0",
@@ -16,5 +29,6 @@
     "validator": "^13.1.1",
     "yeoman-generator": "^4.11.0",
     "yosay": "^2.0.2"
-  }
+  },
+  "license": " Apache-2.0"
 }
