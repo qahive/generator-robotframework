@@ -11,9 +11,11 @@
 #install-command {
   font-family: Consolas,Monaco,andale mono,monospace;
   padding: 5px 10px;
-  background: #fff;
-  border: 1px solid #eee;
+  color: white;
+  background: #424242;
+  border: 1px solid #000000;
   border-radius: 3px;
+  max-width: 600px;
 }
 
 /*--------------------------------------------------------------
