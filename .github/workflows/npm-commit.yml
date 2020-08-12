@@ -1,0 +1,29 @@
+name: Node.js Generate zip
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm test
+
+  build-package:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: npm install -g .
+      - run: mkdir rf-puppeteer_page_object
+      - run: cd rf-puppeteer_page_object
+      - run: yo robotframework-puppeteer
+

@@ -24,7 +24,7 @@ module.exports = class extends Generator {
       name: "isAtdd",
       message: "Would you like to use ATDD/BDD style?",
       default: false
-    }/*, {
+    } /*, {
       type: "input",
       name: "isPdf",
       message: "Would you like to include PDF reader?",

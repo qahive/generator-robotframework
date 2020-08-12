@@ -8,3 +8,14 @@ Run following command
     npm install -g .
     cd tmp
     yo robotframework-puppeteer
+
+
+## Build zip file
+Run following command
+
+    yo-gen-run --name <generator-name> --config <path-to-config> --out <name-of-output-dir>
+
+Generate list
+
+    yo-gen-run --name robotframework-puppeteer --config config-page-object.json --out test-project-page-object
+

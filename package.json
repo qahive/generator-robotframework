@@ -28,6 +28,7 @@
     "scaffold-generator": "^3.0.4",
     "validator": "^13.1.1",
     "yeoman-generator": "^4.11.0",
+    "yeoman-gen-run": "^1.2.3",
     "yosay": "^2.0.2"
   },
   "license": " Apache-2.0"

@@ -1,3 +1,6 @@
 package-lock.json
 node_modules/
 tmp/
+rfp-test-project/
+rfp-test-project-atdd.zip
+rfp-test-project-page-object.zip

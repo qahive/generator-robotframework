@@ -1,0 +1,9 @@
+{
+  "answers": {
+    "isPageObject": true,
+    "isAtdd": false
+  },
+  "options": {
+      "onconflict": "force"
+  }
+}
