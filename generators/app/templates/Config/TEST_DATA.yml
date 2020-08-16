@@ -1,4 +1,4 @@
-# Environment: <%= Environment %>
+Environment: <%= Environment %>
 user01:
   user: demo
   password: demopass
