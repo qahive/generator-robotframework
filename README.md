@@ -1,6 +1,6 @@
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/qahive/generator-robotframework-puppeteer)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/qahive/generator-robotframework)
 
-# generator-robotframework-puppeteer
+# Yeoman Generator for Robot Framework
 
 ## Local setup
 Run following command
