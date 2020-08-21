@@ -1,7 +1,7 @@
 {
-  "name": "generator-robotframework-puppeteer",
+  "name": "generator-robotframework",
   "version": "0.1.2",
-  "description": "Yeoman generator to create a robotframework puppeteer project",
+  "description": "Yeoman generator to create a robotframework test project",
   "files": [
     "generators"
   ],
@@ -11,15 +11,15 @@
     "puppeteer",
     "robotframework-puppeteer"
   ],
-  "homepage": "https://github.com/qahive/generator-robotframework-puppeteer",
+  "homepage": "https://github.com/qahive/generator-robotframework",
   "author": "Atthaboon Sanurt <atthaboon.s@gmail.com>",
-  "contributors":[
+  "contributors": [
     "Atthaboon Sanurt <atthaboon.s@gmail.com>",
     "Penploy Sribumrungwong <penploy.s@gmail.com>"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/qahive/generator-robotframework-puppeteer.git"
+    "url": "git://github.com/qahive/generator-robotframework.git"
   },
   "dependencies": {
     "chalk": "^4.1.0",
