@@ -1,8 +1,0 @@
-# Python
-__pycache__
-*.pyc
-*.egg-info
-/dist
-/.tox
-/.pytest_cache
-

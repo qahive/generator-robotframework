@@ -66,7 +66,7 @@ module.exports = class extends Generator {
     var stepName = 'Autentication';
 
     // Project detail
-    var utils = ['.gitignore', 'README.md', 'requirements.txt'];
+    var utils = ['README.md', 'requirements.txt'];
     for (var i in utils) {
       this.fs.copyTpl(
         this.templatePath(`${utils[i]}`),
