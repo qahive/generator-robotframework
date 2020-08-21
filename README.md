@@ -18,10 +18,11 @@ Generate test project:
 ## Supported Configurations
 
 **General**
-* Test library: `Puppeteer`, `Selenium`, `Appium` (Default `Puppeteer`)
+* Test library: `Puppeteer` (Default `Puppeteer`)
 * Page object pattern: `Yes`, `No` (Default `Yes`)
 * ATDD/BDD style: `Yes`, `No` (Default `No`)
 
+FYI: Test library: `Selenium` and `Appium` will support soon.
 
 ## Manual Setup
 Run following command
