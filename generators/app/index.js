@@ -57,6 +57,8 @@ module.exports = class extends Generator {
         default: true
       } */ ]).then(answers => {
         this.args = answers;
+        this.args.isPageObject = this.convert_yes_no_to_boolean(answers.isPageObject);
+        this.args.isAtdd = this.convert_yes_no_to_boolean(answers.isAtdd);
         this.config.set(this.args);
       });
   }
@@ -166,5 +168,16 @@ module.exports = class extends Generator {
   end() {
     this.config.save();
   }
+
+  convert_yes_no_to_boolean(option) {
+    if (option == undefined) {
+      return false;
+    }
+    if (option.toLowerCase() == 'yes') {
+      return true;
+    }
+    return false;
+  }
+
 
 }

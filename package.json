@@ -1,6 +1,6 @@
 {
   "name": "generator-robotframework",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Yeoman generator to create a robotframework test project",
   "files": [
     "generators"
