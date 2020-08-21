@@ -18,19 +18,28 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "testLibrary",
-        message: "Please select test library (Puppeteer)",
-        default: 'Puppeteer'
+        message: "Please select test library. (Puppeteer)",
+        default: 'Puppeteer',
+        validate: function (input) {
+            return ['puppeteer'].includes(input.toLowerCase());
+        }
       },
       {
         type: "input",
         name: "isPageObject",
-        message: "Would you like to use Page object pattern?",
-        default: true
+        message: "Would you like to use Page object pattern? (Yes/No)",
+        default: 'Yes',
+        validate: function (input) {
+          return ['yes', 'no'].includes(input.toLowerCase());
+        }
       }, {
         type: "input",
         name: "isAtdd",
-        message: "Would you like to use ATDD/BDD style?",
-        default: false
+        message: "Would you like to use ATDD/BDD style? (Yes/No)",
+        default: 'No',
+        validate: function (input) {
+          return ['yes', 'no'].includes(input.toLowerCase());
+        }
       }/*, {
         type: "input",
         name: "isPdf",
