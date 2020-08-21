@@ -14,35 +14,51 @@ module.exports = class extends Generator {
         "I'll walk you through the installation."
     ));
 
-    return this.prompt([{
-      type: "input",
-      name: "isPageObject",
-      message: "Would you like to use Page object pattern?",
-      default: true
-    }, {
-      type: "input",
-      name: "isAtdd",
-      message: "Would you like to use ATDD/BDD style?",
-      default: false
-    }/*, {
-      type: "input",
-      name: "isPdf",
-      message: "Would you like to include PDF reader?",
-      default: true
-    }, {
-      type: "input",
-      name: "zxing",
-      message: "Would you like to include QRCode reader?",
-      default: true
-    }, {
-      type: "input",
-      name: "percy",
-      message: "Would you like to include Visual Testing?",
-      default: true
-    } */ ]).then(answers => {
-      this.args = answers;
-      this.config.set(this.args);
-    });
+    return this.prompt([
+      {
+        type: "input",
+        name: "testLibrary",
+        message: "Please select test library. (Puppeteer)",
+        default: 'Puppeteer',
+        validate: function (input) {
+            return ['puppeteer'].includes(input.toLowerCase());
+        }
+      },
+      {
+        type: "input",
+        name: "isPageObject",
+        message: "Would you like to use Page object pattern? (Yes/No)",
+        default: 'Yes',
+        validate: function (input) {
+          return ['yes', 'no'].includes(input.toLowerCase());
+        }
+      }, {
+        type: "input",
+        name: "isAtdd",
+        message: "Would you like to use ATDD/BDD style? (Yes/No)",
+        default: 'No',
+        validate: function (input) {
+          return ['yes', 'no'].includes(input.toLowerCase());
+        }
+      }/*, {
+        type: "input",
+        name: "isPdf",
+        message: "Would you like to include PDF reader?",
+        default: true
+      }, {
+        type: "input",
+        name: "zxing",
+        message: "Would you like to include QRCode reader?",
+        default: true
+      }, {
+        type: "input",
+        name: "percy",
+        message: "Would you like to include Visual Testing?",
+        default: true
+      } */ ]).then(answers => {
+        this.args = answers;
+        this.config.set(this.args);
+      });
   }
 
   writing() {
